@@ -1,0 +1,1460 @@
+{
+  "central": [
+    {
+      "id": "c1",
+      "name": "Temple of the Tooth",
+      "desc": "Sacred Buddhist temple in Kandy.",
+      "lat": 7.291796870261116,
+      "lon": 80.61860526839016,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "c2",
+      "name": "Gregory Lake",
+      "desc": "Scenic reservoir in Nuwara Eliya.",
+      "lat": 7.29923220151737,
+      "lon": 80.637930029986,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "c3",
+      "name": "Royal Botanical Gardens",
+      "desc": "Orchid collection in Peradeniya.",
+      "lat": 7.303177554417672,
+      "lon": 80.60880157513034,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "c4",
+      "name": "Ambuluwawa Tower",
+      "desc": "Spiral tower in Gampola.",
+      "lat": 7.304023280696907,
+      "lon": 80.6526177463184,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "c5",
+      "name": "Knuckles Mountain Range",
+      "desc": "Rugged trekking terrain.",
+      "lat": 7.310638238584431,
+      "lon": 80.62370048208733,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "c6",
+      "name": "Pinnawala Elephant Orphanage",
+      "desc": "Elephant sanctuary nearby.",
+      "lat": 7.28268841698115,
+      "lon": 80.63827150753377,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "c7",
+      "name": "Horton Plains",
+      "desc": "High altitude plateau park.",
+      "lat": 7.2662390968987625,
+      "lon": 80.64458891273215,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "c8",
+      "name": "Worlds End",
+      "desc": "Sheer precipice in Horton Plains.",
+      "lat": 7.301546310595121,
+      "lon": 80.60559078602738,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "c9",
+      "name": "Bahirawakanda Vihara",
+      "desc": "Giant Buddha statue overlooking Kandy.",
+      "lat": 7.277227943691012,
+      "lon": 80.63303439316522,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "c10",
+      "name": "Hunas Falls",
+      "desc": "Beautiful waterfall in Matale district.",
+      "lat": 7.308155762131853,
+      "lon": 80.62155551809232,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "c11",
+      "name": "Dambulla Cave Temple",
+      "desc": "Golden temple complex.",
+      "lat": 7.304563562037641,
+      "lon": 80.6202254273103,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "c12",
+      "name": "Pidurangala Rock",
+      "desc": "Alternative hike near Sigiriya.",
+      "lat": 7.304843173618644,
+      "lon": 80.62345267322945,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "c13",
+      "name": "Udawatta Kele",
+      "desc": "Sanctuary in the heart of Kandy.",
+      "lat": 7.30165142762793,
+      "lon": 80.64498681403231,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "c14",
+      "name": "Victoria Dam",
+      "desc": "Highest dam in Sri Lanka.",
+      "lat": 7.313373898879878,
+      "lon": 80.6121870453622,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "c15",
+      "name": "Maduru Oya Park",
+      "desc": "Wildlife and ancient ruins.",
+      "lat": 7.26898047433716,
+      "lon": 80.6525115225635,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "c16",
+      "name": "Sembuwatta Lake",
+      "desc": "Man-made lake with misty hills.",
+      "lat": 7.305215135616541,
+      "lon": 80.61828904914395,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "c17",
+      "name": "St. Clair's Falls",
+      "desc": "Little Niagara of Sri Lanka.",
+      "lat": 7.267963444747779,
+      "lon": 80.60678954159052,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "c18",
+      "name": "Devon Falls",
+      "desc": "Waterfall named after English coffee planter.",
+      "lat": 7.307556970563777,
+      "lon": 80.64189132584691,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "c19",
+      "name": "Aluvihare Rock Temple",
+      "desc": "Where Pali Canon was written.",
+      "lat": 7.2961329601886264,
+      "lon": 80.64832947727201,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "c20",
+      "name": "Matale Spice Gardens",
+      "desc": "Educational spice tours.",
+      "lat": 7.292813200951747,
+      "lon": 80.61935940326724,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "southern": [
+    {
+      "id": "s1",
+      "name": "Galle Fort",
+      "desc": "Portuguese historical fortifications.",
+      "lat": 6.010626379586148,
+      "lon": 80.2003817064022,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "s2",
+      "name": "Mirissa Beach",
+      "desc": "Whale watching paradise.",
+      "lat": 6.006771487927023,
+      "lon": 80.22324611613537,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "s3",
+      "name": "Yala National Park",
+      "desc": "Wildlife (leopards and elephants).",
+      "lat": 6.02761552049412,
+      "lon": 80.22302869586942,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "s4",
+      "name": "Unawatuna Beach",
+      "desc": "Crescent beach and palm trees.",
+      "lat": 6.012234803318437,
+      "lon": 80.19070957647922,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "s5",
+      "name": "Tangalle",
+      "desc": "Pristine beaches and luxury stays.",
+      "lat": 6.032338705672454,
+      "lon": 80.19941374940467,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "s6",
+      "name": "Weligama Bay",
+      "desc": "Ideal for beginner surfing.",
+      "lat": 6.048347073342967,
+      "lon": 80.20421325303819,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "s7",
+      "name": "Hiriketiya Beach",
+      "desc": "Hidden horseshoe surf bay.",
+      "lat": 6.006890055605132,
+      "lon": 80.20588624837363,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "s8",
+      "name": "Dondra Head Lighthouse",
+      "desc": "Southernmost point of Sri Lanka.",
+      "lat": 6.013444096343622,
+      "lon": 80.22572606305849,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "s9",
+      "name": "Hummanaya Blowhole",
+      "desc": "Natural seawater blowhole.",
+      "lat": 6.010638104104053,
+      "lon": 80.2171151876873,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "s10",
+      "name": "Koggala Lake",
+      "desc": "Serene lake with small islands.",
+      "lat": 6.020386193768551,
+      "lon": 80.19383635747208,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "s11",
+      "name": "Handunugoda Tea Estate",
+      "desc": "Virgin White Tea production.",
+      "lat": 6.025329684296823,
+      "lon": 80.20992984073608,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "s12",
+      "name": "Kushtarajagala",
+      "desc": "Rock-cut statue of Avalokiteshvara.",
+      "lat": 6.036142077053669,
+      "lon": 80.19307358495665,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "s13",
+      "name": "Star Fort Matara",
+      "desc": "Dutch fort built in star shape.",
+      "lat": 6.035542778504212,
+      "lon": 80.19343927450328,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "s14",
+      "name": "Polhena Beach",
+      "desc": "Safe snorkeling and turtle sightings.",
+      "lat": 6.0184191152610955,
+      "lon": 80.22366508999981,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "s15",
+      "name": "Rekawa Beach",
+      "desc": "Famous for turtle nesting.",
+      "lat": 6.0142795949139245,
+      "lon": 80.18699379847043,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "s16",
+      "name": "Madu River Safari",
+      "desc": "Boat ride through mangroves.",
+      "lat": 6.040129067823795,
+      "lon": 80.1900607003272,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "s17",
+      "name": "Ahungalla Beach",
+      "desc": "Golden sands and palm luxury.",
+      "lat": 6.033116459533515,
+      "lon": 80.2137444711945,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "s18",
+      "name": "Bentota Beach",
+      "desc": "Major water sports hub.",
+      "lat": 6.031057235005149,
+      "lon": 80.20923776039746,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "s19",
+      "name": "Kosgoda Turtle Hatchery",
+      "desc": "Sea turtle conservation center.",
+      "lat": 6.0095730825072655,
+      "lon": 80.23241835952108,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "s20",
+      "name": "Kanneliya Forest",
+      "desc": "Lowland rainforest biodiversity.",
+      "lat": 6.0112643275989575,
+      "lon": 80.23036999004356,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "western": [
+    {
+      "id": "w1",
+      "name": "Lotus Tower",
+      "desc": "Tallest South Asian tower.",
+      "lat": 6.925895372258132,
+      "lon": 79.86014957167734,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "w2",
+      "name": "Negombo Beach",
+      "desc": "Golden sands near airport.",
+      "lat": 6.925016890337409,
+      "lon": 79.85443646359509,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "w3",
+      "name": "Independence Square",
+      "desc": "Grand monument in Colombo.",
+      "lat": 6.937029119588225,
+      "lon": 79.84718423570553,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "w4",
+      "name": "Galle Face Green",
+      "desc": "Ocean-side urban park.",
+      "lat": 6.916919057365061,
+      "lon": 79.85528152443352,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "w5",
+      "name": "Mount Lavinia",
+      "desc": "Colonial charm beach resort.",
+      "lat": 6.898131103699599,
+      "lon": 79.8664634432733,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "w6",
+      "name": "National Museum",
+      "desc": "Historic artifacts and art.",
+      "lat": 6.944715181057873,
+      "lon": 79.85388088135082,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "w7",
+      "name": "Viharamahadevi Park",
+      "desc": "Colombo's largest public park.",
+      "lat": 6.896125804239103,
+      "lon": 79.87889176680288,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "w8",
+      "name": "Gangaramaya Temple",
+      "desc": "Modern eclectic Buddhist temple.",
+      "lat": 6.924532172957109,
+      "lon": 79.84377068255598,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "w9",
+      "name": "Beira Lake",
+      "desc": "Urban lake with Seema Malaka temple.",
+      "lat": 6.9216696465055865,
+      "lon": 79.86039916723917,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "w10",
+      "name": "St. Anthony's Shrine",
+      "desc": "Famous Catholic pilgrimage site.",
+      "lat": 6.898072279813716,
+      "lon": 79.88272067353823,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "w11",
+      "name": "Bellanwila Temple",
+      "desc": "Venerated ancient Buddhist site.",
+      "lat": 6.92029538558863,
+      "lon": 79.88193094803063,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "w12",
+      "name": "Bolgoda Lake",
+      "desc": "Largest natural lake in Sri Lanka.",
+      "lat": 6.91544434606565,
+      "lon": 79.85951068697514,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "w13",
+      "name": "Kelaniya Temple",
+      "desc": "Sanctified by Buddha's visit.",
+      "lat": 6.943997747503397,
+      "lon": 79.84009643921911,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "w14",
+      "name": "Apey Gama",
+      "desc": "Replica of a traditional village.",
+      "lat": 6.927098849225324,
+      "lon": 79.84925453998922,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "w15",
+      "name": "Waters Edge",
+      "desc": "Recreational park in Battaramulla.",
+      "lat": 6.917927615646128,
+      "lon": 79.86581204072459,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "w16",
+      "name": "Diyatha Uyana",
+      "desc": "Lakeside park and food stalls.",
+      "lat": 6.931143942588816,
+      "lon": 79.84384342215797,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "w17",
+      "name": "Beddagana Park",
+      "desc": "Nature walk and bird watching.",
+      "lat": 6.929329683975104,
+      "lon": 79.87500719968077,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "w18",
+      "name": "Attidiya Sanctuary",
+      "desc": "Wetland bird habitat.",
+      "lat": 6.921363866913852,
+      "lon": 79.86661794496263,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "w19",
+      "name": "Dutch Hospital",
+      "desc": "Oldest building in Fort area.",
+      "lat": 6.903069318865585,
+      "lon": 79.86903682203408,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "w20",
+      "name": "Pettah Market",
+      "desc": "Modern shopping on water.",
+      "lat": 6.931082471899354,
+      "lon": 79.88288184100445,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "eastern": [
+    {
+      "id": "e1",
+      "name": "Arugam Bay",
+      "desc": "Surfing point break destination.",
+      "lat": 8.568907186240265,
+      "lon": 81.20583987333215,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "e2",
+      "name": "Pigeon Island",
+      "desc": "Coral reef national park.",
+      "lat": 8.550837073157641,
+      "lon": 81.23360081659662,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "e3",
+      "name": "Trincomalee Harbour",
+      "desc": "Natural deep-water harbour.",
+      "lat": 8.555924160824102,
+      "lon": 81.24205894511546,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "e4",
+      "name": "Nilaveli Beach",
+      "desc": "White sands and turquoise waters.",
+      "lat": 8.57413146329054,
+      "lon": 81.23302158581615,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "e5",
+      "name": "Batticaloa Lagoon",
+      "desc": "Home of the singing fish.",
+      "lat": 8.57511007674334,
+      "lon": 81.22074076615564,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "e6",
+      "name": "Uppuveli Beach",
+      "desc": "Relaxed vibe and seafood stalls.",
+      "lat": 8.582678872426992,
+      "lon": 81.23785018831332,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "e7",
+      "name": "Koneswaram Temple",
+      "desc": "Classical Hindu temple on Swami Rock.",
+      "lat": 8.581107916167102,
+      "lon": 81.21825035709782,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "e8",
+      "name": "Marble Beach",
+      "desc": "Hidden gem with crystal waters.",
+      "lat": 8.540624757405281,
+      "lon": 81.23924265944136,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "e9",
+      "name": "Kanniya Hot Springs",
+      "desc": "Ancient therapeutic hot wells.",
+      "lat": 8.566370360101883,
+      "lon": 81.21288345429049,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "e10",
+      "name": "Pasikudah Bay",
+      "desc": "Shallow waters and luxury resorts.",
+      "lat": 8.554204532601295,
+      "lon": 81.21772808935356,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "e11",
+      "name": "Kalkudah Beach",
+      "desc": "Pristine and secluded sands.",
+      "lat": 8.541637728272933,
+      "lon": 81.22622356920708,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "e12",
+      "name": "Ampara Tank",
+      "desc": "Large reservoir and wildlife.",
+      "lat": 8.541972023446396,
+      "lon": 81.21453346788519,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "e13",
+      "name": "Buddhangala Monastery",
+      "desc": "Ancient ruins in Ampara.",
+      "lat": 8.555186188541228,
+      "lon": 81.21752128536708,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "e14",
+      "name": "Lahugala Kitulana",
+      "desc": "National park for elephants.",
+      "lat": 8.548488002920303,
+      "lon": 81.25277578081791,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "e15",
+      "name": "Magul Maha Viharaya",
+      "desc": "Site of royal wedding ceremony.",
+      "lat": 8.560748176553195,
+      "lon": 81.22619481628291,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "e16",
+      "name": "Okanda Devalaya",
+      "desc": "Coastal shrine for pilgrims.",
+      "lat": 8.551010652451389,
+      "lon": 81.21304030346549,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "e17",
+      "name": "Kumana National Park",
+      "desc": "Bird sanctuary and leopards.",
+      "lat": 8.578838760830797,
+      "lon": 81.22045868233013,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "e18",
+      "name": "Gal Oya National Park",
+      "desc": "Boat safaris and wild elephants.",
+      "lat": 8.575699586253664,
+      "lon": 81.24693347268634,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "e19",
+      "name": "Senanayake Samudraya",
+      "desc": "Largest reservoir in Sri Lanka.",
+      "lat": 8.577270766914582,
+      "lon": 81.24266916277851,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "e20",
+      "name": "Elephant Rock",
+      "desc": "Popular viewpoint in Arugam Bay.",
+      "lat": 8.545686339019445,
+      "lon": 81.2403234425813,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "north-central": [
+    {
+      "id": "n1",
+      "name": "Sigiriya Rock",
+      "desc": "Ancient fortress and palace.",
+      "lat": 8.300333025458395,
+      "lon": 80.3944814539024,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "n2",
+      "name": "Polonnaruwa",
+      "desc": "Ruins of ancient kingdom.",
+      "lat": 8.312374241526568,
+      "lon": 80.40748756699752,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "n3",
+      "name": "Anuradhapura",
+      "desc": "Ancient sacred city and stupas.",
+      "lat": 8.324597123134925,
+      "lon": 80.40004284337218,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "n4",
+      "name": "Mihintale",
+      "desc": "Birthplace of Buddhism here.",
+      "lat": 8.291529303917583,
+      "lon": 80.3767986992465,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "n5",
+      "name": "Ritigala",
+      "desc": "Ancient forest monastery range.",
+      "lat": 8.295070282868837,
+      "lon": 80.39686665137559,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "n6",
+      "name": "Isurumuniya",
+      "desc": "Famous for stone carvings.",
+      "lat": 8.289062213206464,
+      "lon": 80.39795184765774,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "n7",
+      "name": "Sri Maha Bodhi",
+      "desc": "World's oldest planted tree.",
+      "lat": 8.300009493697113,
+      "lon": 80.38777996581527,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "n8",
+      "name": "Ruwanwelisaya",
+      "desc": "Colossal bubble-shaped stupa.",
+      "lat": 8.303585201039986,
+      "lon": 80.41907803416007,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "n9",
+      "name": "Jetavanaramaya",
+      "desc": "Tallest brick structure of antiquity.",
+      "lat": 8.293146957103982,
+      "lon": 80.41199707066329,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "n10",
+      "name": "Abhayagiri Dagoba",
+      "desc": "Massive monastery ruins.",
+      "lat": 8.326499586417984,
+      "lon": 80.38959320866573,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "n11",
+      "name": "Minneriya National",
+      "desc": "The Great Elephant Gathering.",
+      "lat": 8.285907210130446,
+      "lon": 80.40464034587646,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "n12",
+      "name": "Kaudulla Park",
+      "desc": "Another hub for wild elephants.",
+      "lat": 8.31034002109558,
+      "lon": 80.41729211693078,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "n13",
+      "name": "Giritale Tank",
+      "desc": "Scenic reservoir and ruins.",
+      "lat": 8.321758797732263,
+      "lon": 80.40140876107719,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "n14",
+      "name": "Lankathilaka",
+      "desc": "High-walled massive brick structure.",
+      "lat": 8.289045457758586,
+      "lon": 80.39989766434243,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "n15",
+      "name": "Gal Viharaya",
+      "desc": "Exquisite rock-cut Buddha statues.",
+      "lat": 8.304408649405596,
+      "lon": 80.40008681780522,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "n16",
+      "name": "Vatadage",
+      "desc": "Circular relic house in Polonnaruwa.",
+      "lat": 8.31172246946016,
+      "lon": 80.42358036004256,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "n17",
+      "name": "Hatadage",
+      "desc": "Ancient relic shrine of Tooth.",
+      "lat": 8.286892180215219,
+      "lon": 80.41587296755667,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "n18",
+      "name": "Rankot Vihara",
+      "desc": "Largest dagoba in Polonnaruwa.",
+      "lat": 8.29298644386437,
+      "lon": 80.3919907491502,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "n19",
+      "name": "Tivanka House",
+      "desc": "Exquisite ancient frescoes.",
+      "lat": 8.287614518708946,
+      "lon": 80.38745877380326,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "n20",
+      "name": "Parakrama Samudra",
+      "desc": "The Sea of Parakrama reservoir.",
+      "lat": 8.316076202860934,
+      "lon": 80.42078895146605,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "uva": [
+    {
+      "id": "u1",
+      "name": "Nine Arches Bridge",
+      "desc": "Iconic colonial railway bridge.",
+      "lat": 7.008625811724752,
+      "lon": 81.06033079330314,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "u2",
+      "name": "Ella Rock",
+      "desc": "Hike with panoramic views.",
+      "lat": 6.975875459669423,
+      "lon": 81.06089040759329,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "u3",
+      "name": "Little Adam's Peak",
+      "desc": "Ridge-line viewpoints hike.",
+      "lat": 6.984290237935701,
+      "lon": 81.05413733870162,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "u4",
+      "name": "Dunhinda Falls",
+      "desc": "Beautiful high waterfall.",
+      "lat": 6.966628017419658,
+      "lon": 81.07426354515498,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "u5",
+      "name": "Lipton's Seat",
+      "desc": "Breathtaking tea estate viewpoint.",
+      "lat": 6.994980906423544,
+      "lon": 81.02689609183136,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "u6",
+      "name": "Ravana Falls",
+      "desc": "Associated with Ramayana legend.",
+      "lat": 7.012191944012097,
+      "lon": 81.03034949235821,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "u7",
+      "name": "Adisham Bungalow",
+      "desc": "St. Benedictine monastery.",
+      "lat": 6.969466503768607,
+      "lon": 81.05854963451819,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "u8",
+      "name": "Buduruwagala",
+      "desc": "Colossal rock-cut Buddha figures.",
+      "lat": 6.976883226079199,
+      "lon": 81.04603372208372,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "u9",
+      "name": "Diyaluma Falls",
+      "desc": "Sri Lanka's second highest waterfall.",
+      "lat": 6.970077173155604,
+      "lon": 81.03084177038757,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "u10",
+      "name": "Bambarakanda Falls",
+      "desc": "Highest waterfall in the country.",
+      "lat": 6.991344713637504,
+      "lon": 81.0370460668265,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "u11",
+      "name": "Muthiyangana Vihara",
+      "desc": "Ancient temple in Badulla.",
+      "lat": 6.9726919592027325,
+      "lon": 81.02974677687769,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "u12",
+      "name": "Narangala Mount",
+      "desc": "Popular mountain for camping.",
+      "lat": 6.976198687704196,
+      "lon": 81.04689949940038,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "u13",
+      "name": "Maligawila Buddha",
+      "desc": "Free-standing ancient stone statue.",
+      "lat": 7.012689209817084,
+      "lon": 81.06877824897369,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "u14",
+      "name": "Yudaganawa Stupa",
+      "desc": "One of the largest in Uva.",
+      "lat": 6.973978856959492,
+      "lon": 81.02760199160691,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "u15",
+      "name": "Bogoda Bridge",
+      "desc": "Oldest wooden bridge in the country.",
+      "lat": 7.00336416538743,
+      "lon": 81.0448829750752,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "u16",
+      "name": "Demodara Loop",
+      "desc": "Unique railway engineering marvel.",
+      "lat": 6.986295725103962,
+      "lon": 81.07328391671062,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "u17",
+      "name": "Haputale Town",
+      "desc": "Misty town with sheer cliffs.",
+      "lat": 7.011780040621326,
+      "lon": 81.06972473851134,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "u18",
+      "name": "Idalgashinna",
+      "desc": "Scenic railway station in the clouds.",
+      "lat": 7.006588120897401,
+      "lon": 81.05839455488395,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "u19",
+      "name": "Sorabora Wewa",
+      "desc": "Ancient irrigation masterpiece.",
+      "lat": 6.97918093569951,
+      "lon": 81.03012856822785,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "u20",
+      "name": "Rawana Cave",
+      "desc": "Legendary hiding place of Seetha.",
+      "lat": 6.976196150899382,
+      "lon": 81.06793057305886,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "northern": [
+    {
+      "id": "n1",
+      "name": "Jaffna Fort",
+      "desc": "Limestone colonial fortification.",
+      "lat": 9.674438701687649,
+      "lon": 80.01640416239076,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "n2",
+      "name": "Nallur Kovil",
+      "desc": "Grand Hindu temple complex.",
+      "lat": 9.678834102025577,
+      "lon": 80.00624832316377,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "n3",
+      "name": "Nagadeepa Temple",
+      "desc": "Ancient island temple site.",
+      "lat": 9.668968835009037,
+      "lon": 79.99211727021516,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "n4",
+      "name": "Casuarina Beach",
+      "desc": "Shallow blue karainagar beach.",
+      "lat": 9.67516964565699,
+      "lon": 79.9859135370214,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "n5",
+      "name": "Delft Island",
+      "desc": "Wild horses and history.",
+      "lat": 9.659397710120077,
+      "lon": 80.01371350617234,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "n6",
+      "name": "Point Pedro",
+      "desc": "Northernmost edge of Sri Lanka.",
+      "lat": 9.68498282355274,
+      "lon": 80.01744660661902,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "n7",
+      "name": "Kandarodai Stupas",
+      "desc": "Enigmatic cluster of small stupas.",
+      "lat": 9.647613310808817,
+      "lon": 80.0135981581254,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "n8",
+      "name": "Keerimalai Springs",
+      "desc": "Sacred coastal bathing ponds.",
+      "lat": 9.644490565713793,
+      "lon": 80.01470713760396,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "n9",
+      "name": "Elephant Pass",
+      "desc": "Strategic gateway to Jaffna.",
+      "lat": 9.671070220588922,
+      "lon": 80.01894123869458,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "n10",
+      "name": "Charty Beach",
+      "desc": "Secluded sandy beach in Jaffna.",
+      "lat": 9.666136016716292,
+      "lon": 79.99484146297969,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "n11",
+      "name": "Mandaitivu Island",
+      "desc": "Scenic island linked by causeway.",
+      "lat": 9.667693787608158,
+      "lon": 79.98387540540459,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "n12",
+      "name": "Karainagar Causeway",
+      "desc": "Beautiful drive through the sea.",
+      "lat": 9.66228164796095,
+      "lon": 79.99064021685155,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "n13",
+      "name": "Vallipuram Temple",
+      "desc": "Ancient Vishnu temple site.",
+      "lat": 9.677083883582856,
+      "lon": 80.00582445922134,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "n14",
+      "name": "Jaffna Library",
+      "desc": "Symbol of cultural resilience.",
+      "lat": 9.674814713631116,
+      "lon": 79.99274539381302,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "n15",
+      "name": "Sangilean Arch",
+      "desc": "Archway of the last Jaffna king.",
+      "lat": 9.635396165694635,
+      "lon": 80.01163421206414,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "n16",
+      "name": "Minister's Palace",
+      "desc": "Ruins of a royal residence.",
+      "lat": 9.639222814273886,
+      "lon": 80.01675516059102,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "n17",
+      "name": "Naguleswaram",
+      "desc": "One of the five Ishwarams.",
+      "lat": 9.637529345747154,
+      "lon": 80.00662836117749,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "n18",
+      "name": "Dambakola Patuna",
+      "desc": "Where Sangamitta landed here.",
+      "lat": 9.675093024828298,
+      "lon": 79.98506407959343,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "n19",
+      "name": "Pooneryn Fort",
+      "desc": "Remote Dutch ruins in the north.",
+      "lat": 9.675875447903245,
+      "lon": 80.02484245370128,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "n20",
+      "name": "Iranamadu Tank",
+      "desc": "Largest reservoir in northern region.",
+      "lat": 9.635993008432521,
+      "lon": 79.98582784415522,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "north-western": [
+    {
+      "id": "n1",
+      "name": "Kalpitiya Lagoon",
+      "desc": "Kite surfing and dolphins.",
+      "lat": 7.583158036673142,
+      "lon": 79.83059360946336,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "n2",
+      "name": "Munneswaram",
+      "desc": "Ancient Chilaw Hindu complex.",
+      "lat": 7.578237940060348,
+      "lon": 79.81957443086974,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "n3",
+      "name": "Wilpattu National",
+      "desc": "Sri Lanka's largest park.",
+      "lat": 7.556556552844407,
+      "lon": 79.84392429792724,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "n4",
+      "name": "Panduwasnuwara",
+      "desc": "Ancient kingdom ruins site.",
+      "lat": 7.563651244197411,
+      "lon": 79.8056476814001,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "n5",
+      "name": "Yapahuwa Rock",
+      "desc": "Historic capital rock stair.",
+      "lat": 7.5848615021630845,
+      "lon": 79.82803336817668,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "n6",
+      "name": "Muthurajawela",
+      "desc": "Important coastal wetland.",
+      "lat": 7.5603963837835035,
+      "lon": 79.8051596774584,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "n7",
+      "name": "Chilaw Beach",
+      "desc": "Stretching coastal sands.",
+      "lat": 7.603929940954719,
+      "lon": 79.84462777370331,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "n8",
+      "name": "Marawila Beach",
+      "desc": "Quiet resort town atmosphere.",
+      "lat": 7.594066159548137,
+      "lon": 79.8422845931915,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "n9",
+      "name": "Puttalam Lagoon",
+      "desc": "Vast lagoon with salt pans.",
+      "lat": 7.557697643525472,
+      "lon": 79.82127663896617,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "n10",
+      "name": "Paramakanda Rock",
+      "desc": "Temple on a sheer rock cliff.",
+      "lat": 7.560065740818661,
+      "lon": 79.80626217186477,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "n11",
+      "name": "Dambadeniya",
+      "desc": "Ancient capital with hill ruins.",
+      "lat": 7.563091468898439,
+      "lon": 79.80938810124583,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "n12",
+      "name": "Ethagala Rock",
+      "desc": "The Elephant Rock viewpoint.",
+      "lat": 7.579922330689159,
+      "lon": 79.81004414104497,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "n13",
+      "name": "Ridi Vihara",
+      "desc": "Ancient silver forest monastery.",
+      "lat": 7.556951750733795,
+      "lon": 79.84922523347345,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "n14",
+      "name": "Athugala Statue",
+      "desc": "Giant Buddha on Kurunegala cliff.",
+      "lat": 7.58583582200211,
+      "lon": 79.85135833843688,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "n15",
+      "name": "Talawila Church",
+      "desc": "Historic St. Anne's shrine.",
+      "lat": 7.5798043600066265,
+      "lon": 79.82798749028916,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "n16",
+      "name": "Kudiramalai Point",
+      "desc": "Ancient port with red sands.",
+      "lat": 7.580987890694833,
+      "lon": 79.84965074586043,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "n17",
+      "name": "Arankele Hermitage",
+      "desc": "Ancient hermitage ruins.",
+      "lat": 7.599116315256035,
+      "lon": 79.80818673898405,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "n18",
+      "name": "Nikaweratiya Tank",
+      "desc": "Beautiful inland reservoir.",
+      "lat": 7.59062588858978,
+      "lon": 79.8251005563341,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "n19",
+      "name": "Kurunegala Lake",
+      "desc": "Heart of the rock city.",
+      "lat": 7.598132120658621,
+      "lon": 79.82641137625113,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "n20",
+      "name": "Sandalankawa",
+      "desc": "Center of traditional agriculture.",
+      "lat": 7.602924091018761,
+      "lon": 79.84670212926082,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ],
+  "sabaragamuwa": [
+    {
+      "id": "s1",
+      "name": "Adams Peak",
+      "desc": "Spiritual mountain pilgrimage.",
+      "lat": 6.66793774179828,
+      "lon": 80.40174160095066,
+      "img": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203"
+    },
+    {
+      "id": "s2",
+      "name": "Ratnapura Gem Mines",
+      "desc": "Mining for sapphires and rubies.",
+      "lat": 6.689615155959694,
+      "lon": 80.37776988875109,
+      "img": "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9"
+    },
+    {
+      "id": "s3",
+      "name": "Udawalawe Park",
+      "desc": "Elephant herds in the wild.",
+      "lat": 6.697157521303728,
+      "lon": 80.39117482032516,
+      "img": "https://images.unsplash.com/photo-1612862862126-865765df2ded"
+    },
+    {
+      "id": "s4",
+      "name": "Elephant Orphanage",
+      "desc": "Pinnawala sanctuary.",
+      "lat": 6.656032838231332,
+      "lon": 80.3978702016758,
+      "img": "https://images.unsplash.com/photo-1580910527739-556eb89f9d65"
+    },
+    {
+      "id": "s5",
+      "name": "Belilena Caves",
+      "desc": "Prehistoric archaeological site.",
+      "lat": 6.694311955708343,
+      "lon": 80.41634187362992,
+      "img": "https://plus.unsplash.com/premium_photo-1666254114402-cd16bc302aea"
+    },
+    {
+      "id": "s6",
+      "name": "Saman Devalaya",
+      "desc": "Grand shrine of God Saman.",
+      "lat": 6.681692840882579,
+      "lon": 80.38230992253922,
+      "img": "https://images.unsplash.com/photo-1574611122955-5baa61496637"
+    },
+    {
+      "id": "s7",
+      "name": "Kitulgala Rafting",
+      "desc": "Adventure hub for river rafting.",
+      "lat": 6.702237928866201,
+      "lon": 80.37544780874127,
+      "img": "https://images.unsplash.com/photo-1578519050142-afb511e518de"
+    },
+    {
+      "id": "s8",
+      "name": "Sinharaja Forest",
+      "desc": "UNESCO rainforest biodiversity.",
+      "lat": 6.66048003277799,
+      "lon": 80.40428819981614,
+      "img": "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf"
+    },
+    {
+      "id": "s9",
+      "name": "Bopath Ella",
+      "desc": "Bo-leaf shaped waterfall.",
+      "lat": 6.665751800214958,
+      "lon": 80.38776063257083,
+      "img": "https://plus.unsplash.com/premium_photo-1723874462909-99abb7ff12d3"
+    },
+    {
+      "id": "s10",
+      "name": "Dover Cave",
+      "desc": "Intriguing natural formations.",
+      "lat": 6.679690377903159,
+      "lon": 80.40597007651074,
+      "img": "https://images.unsplash.com/photo-1571406761758-9a3eed5338ef"
+    },
+    {
+      "id": "s11",
+      "name": "Kirindi Ella",
+      "desc": "Cascading waterfall in Ratnapura.",
+      "lat": 6.684487994080571,
+      "lon": 80.38835911927869,
+      "img": "https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8"
+    },
+    {
+      "id": "s12",
+      "name": "Batadombalena",
+      "desc": "Balangoda man habitat site.",
+      "lat": 6.667517145707761,
+      "lon": 80.39684547436566,
+      "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
+    },
+    {
+      "id": "s13",
+      "name": "Wavulpane Cave",
+      "desc": "Cave of bats and fossils.",
+      "lat": 6.681497791157821,
+      "lon": 80.38514041815881,
+      "img": "https://plus.unsplash.com/premium_photo-1681223447322-46794b8cdfd5"
+    },
+    {
+      "id": "s14",
+      "name": "Maduwanwela",
+      "desc": "Archaic aristocrat mansion.",
+      "lat": 6.702910483205982,
+      "lon": 80.38017792618236,
+      "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
+    },
+    {
+      "id": "s15",
+      "name": "Sankapala Vihara",
+      "desc": "Ancient temple in a cave.",
+      "lat": 6.6945515092953665,
+      "lon": 80.42004271276785,
+      "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
+    },
+    {
+      "id": "s16",
+      "name": "Katugas Ella",
+      "desc": "Tucked away forest waterfall.",
+      "lat": 6.690286757925274,
+      "lon": 80.40812473883089,
+      "img": "https://images.unsplash.com/photo-1609681980718-340e7f4b11d7"
+    },
+    {
+      "id": "s17",
+      "name": "Pelmadulla",
+      "desc": "Heart of the gem mining region.",
+      "lat": 6.694067458110025,
+      "lon": 80.4243124581384,
+      "img": "https://plus.unsplash.com/premium_photo-1712366459284-2b564cc93a16"
+    },
+    {
+      "id": "s18",
+      "name": "Godakawela",
+      "desc": "Gateway to the southern plains.",
+      "lat": 6.677122319164246,
+      "lon": 80.38334100040466,
+      "img": "https://images.unsplash.com/photo-1707236606614-fbee3070f156"
+    },
+    {
+      "id": "s19",
+      "name": "Kolonne Valley",
+      "desc": "Scenic agricultural landscape.",
+      "lat": 6.70291393090573,
+      "lon": 80.42370710462602,
+      "img": "https://images.unsplash.com/photo-1533484482814-3fe2d922be89"
+    },
+    {
+      "id": "s20",
+      "name": "Bulutota Pass",
+      "desc": "Winding road with 10 hairpins.",
+      "lat": 6.661482459162399,
+      "lon": 80.38965018138587,
+      "img": "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02"
+    }
+  ]
+}

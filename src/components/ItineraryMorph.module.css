@@ -1,0 +1,94 @@
+.itinerarySection {
+    display: flex;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    gap: 4rem;
+    height: 200vh;
+    /* Allow scrolling */
+}
+
+.timeline {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+}
+
+.mapContainer {
+    flex: 1;
+    position: sticky;
+    top: 100px;
+    /* offset from top */
+    height: calc(100vh - 200px);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: var(--color-sand);
+}
+
+.dayCard {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 20vh;
+    /* Space out enough to trigger scroll effects */
+    transition: all 0.4s ease;
+    position: relative;
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+.dayCard:last-child {
+    margin-bottom: 0;
+}
+
+.dayCard.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.dayNumber {
+    font-family: var(--font-playfair), serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.dayTitle {
+    font-size: 2rem;
+    color: var(--color-forest);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.dayDesc {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .itinerarySection {
+        flex-direction: column-reverse;
+        height: auto;
+    }
+
+    .mapContainer {
+        position: relative;
+        top: 0;
+        height: 400px;
+        margin-bottom: 2rem;
+    }
+
+    .dayCard {
+        margin-bottom: 2rem;
+        opacity: 1;
+        transform: none;
+    }
+}
