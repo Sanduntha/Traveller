@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, ChevronLeft, Hotel, Utensils, Loader2 } from 'lucide-react';
+import { MapPin, ChevronLeft, Hotel, Utensils, Loader2, Info, Image as ImageIcon } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
+import { fetchWikiBatch, WikiData } from '@/lib/wiki';
 import styles from './ProvincialExplorer.module.css';
 
 interface Place {
@@ -1514,6 +1515,31 @@ export default function ProvincialExplorer() {
     const [tab, setTab] = useState('hotels');
     const [showAllPlaces, setShowAllPlaces] = useState(false);
 
+    // Fetch live data (images, descriptions) for all landmarks in the current province
+    const provincePlaces = useMemo(() => (selectedProv ? (PLACES[selectedProv] || []) : []), [selectedProv]);
+    const wikiTitles = useMemo(() => provincePlaces.map(p => p.name), [provincePlaces]);
+
+    const { data: wikiBatch, isLoading: isWikiLoading } = useQuery({
+        queryKey: ['wikiBatch', selectedProv],
+        queryFn: () => fetchWikiBatch(wikiTitles),
+        enabled: !!selectedProv,
+        staleTime: 24 * 60 * 60 * 1000 // Cache for 24 hours
+    });
+
+    // Merge static data with live wiki data
+    const enrichedPlaces = useMemo(() => {
+        return provincePlaces.map(place => {
+            const liveData = wikiBatch?.[place.name];
+            return {
+                ...place,
+                img: liveData?.image || place.img,
+                desc: liveData?.description ? (liveData.description.length > 200 ? liveData.description.substring(0, 200) + '...' : liveData.description) : place.desc,
+                lat: liveData?.lat || place.lat,
+                lon: liveData?.lon || place.lon
+            };
+        });
+    }, [provincePlaces, wikiBatch]);
+
     const { data: poiData, isLoading } = useQuery({
         queryKey: ['nearbyPOIs', selectedPlace?.id],
         queryFn: () => fetchNearbyData(selectedPlace!.lat, selectedPlace!.lon),
@@ -1583,14 +1609,21 @@ export default function ProvincialExplorer() {
                                 <h3 className={styles.title} style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>
                                     Famous Places in {PROVINCES.find(p => p.id === selectedProv)?.name}
                                 </h3>
-                                {PLACES[selectedProv]?.slice(0, showAllPlaces ? 20 : 4).map(place => (
+                                 {enrichedPlaces.slice(0, showAllPlaces ? 20 : 4).map(place => (
                                     <motion.div
                                         key={place.id}
                                         className={`${styles.placeCard} ${selectedPlace?.id === place.id ? styles.placeCardActive : ''}`}
                                         onClick={() => setSelectedPlace(place)}
                                         whileHover={{ scale: 1.02 }}
                                     >
-                                        <img src={place.img} alt={place.name} className={styles.placeImg} />
+                                        <div className={styles.placeImgWrapper}>
+                                            <img src={place.img} alt={place.name} className={styles.placeImg} />
+                                            {isWikiLoading && !wikiBatch?.[place.name] && (
+                                                <div className={styles.imageLoader}>
+                                                    <Loader2 size={24} className="animate-spin" />
+                                                </div>
+                                            )}
+                                        </div>
                                         <div className={styles.placeContent}>
                                             <h4 className={styles.placeTitle}>{place.name}</h4>
                                             <p className={styles.placeDesc}>{place.desc}</p>
@@ -1610,6 +1643,14 @@ export default function ProvincialExplorer() {
                             <div className={styles.dataView}>
                                 <div className={styles.dataHeader}>
                                     <h4 className={styles.dataTitle}>Near {selectedPlace?.name}</h4>
+                                    
+                                    {enrichedPlaces.find(p => p.id === selectedPlace?.id)?.desc && (
+                                        <div className={styles.wikiExtract}>
+                                            <p>{enrichedPlaces.find(p => p.id === selectedPlace?.id)?.desc}</p>
+                                            <span className={styles.sourceTag}><Info size={12} /> Source: Wikipedia</span>
+                                        </div>
+                                    )}
+
                                     <div className={styles.dataTabs}>
                                         <button
                                             className={`${styles.tab} ${tab === 'hotels' ? styles.tabActive : ''}`}
