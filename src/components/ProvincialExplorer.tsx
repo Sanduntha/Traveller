@@ -39,48 +39,48 @@ const PLACES: Record<string, Place[]> = {
             "id": "c1",
             "name": "Temple of the Tooth",
             "desc": "Sacred Buddhist temple in Kandy.",
-            "lat": 7.097442037084231,
-            "lon": 80.81469423724627,
+            "lat": 7.2936,
+            "lon": 80.6413,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "c2",
             "name": "Gregory Lake",
             "desc": "Scenic reservoir in Nuwara Eliya.",
-            "lat": 7.423452089060811,
-            "lon": 80.57265806527222,
+            "lat": 6.9647,
+            "lon": 80.7818,
             "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
         },
         {
             "id": "c3",
             "name": "Royal Botanical Gardens",
             "desc": "Orchid collection in Peradeniya.",
-            "lat": 7.288078295751976,
-            "lon": 80.64661852284662,
+            "lat": 7.2683,
+            "lon": 80.5966,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "c4",
             "name": "Ambuluwawa Tower",
             "desc": "Spiral tower in Gampola.",
-            "lat": 7.264383240191251,
-            "lon": 80.79664352707933,
+            "lat": 7.1528,
+            "lon": 80.5672,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "c5",
             "name": "Knuckles Mountain Range",
             "desc": "Rugged trekking terrain.",
-            "lat": 7.287063540506276,
-            "lon": 80.58070295125142,
+            "lat": 7.4244,
+            "lon": 80.7844,
             "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
         },
         {
             "id": "c6",
             "name": "Pinnawala Elephant Orphanage",
             "desc": "Elephant sanctuary nearby.",
-            "lat": 7.092122455688712,
-            "lon": 80.82214232485991,
+            "lat": 7.3008,
+            "lon": 80.3881,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
@@ -201,40 +201,40 @@ const PLACES: Record<string, Place[]> = {
             "id": "s1",
             "name": "Galle Fort",
             "desc": "Portuguese historical fortifications.",
-            "lat": 6.112207134446493,
-            "lon": 80.30144300052956,
+            "lat": 6.0267,
+            "lon": 80.2111,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "s2",
             "name": "Mirissa Beach",
             "desc": "Whale watching paradise.",
-            "lat": 5.918364563620021,
-            "lon": 80.04380496942662,
+            "lat": 5.9482,
+            "lon": 80.4514,
             "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
         },
         {
             "id": "s3",
             "name": "Yala National Park",
             "desc": "Wildlife (leopards and elephants).",
-            "lat": 6.011997697303937,
-            "lon": 80.16308041574942,
+            "lat": 6.3762,
+            "lon": 81.5125,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "s4",
             "name": "Unawatuna Beach",
             "desc": "Crescent beach and palm trees.",
-            "lat": 6.014382790981541,
-            "lon": 80.33428421237511,
+            "lat": 6.0123,
+            "lon": 80.2486,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "s5",
             "name": "Tangalle",
             "desc": "Pristine beaches and luxury stays.",
-            "lat": 6.138054661130926,
-            "lon": 80.3767978227933,
+            "lat": 6.0244,
+            "lon": 80.7911,
             "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
         },
         {
@@ -363,40 +363,40 @@ const PLACES: Record<string, Place[]> = {
             "id": "w1",
             "name": "Lotus Tower",
             "desc": "Tallest South Asian tower.",
-            "lat": 7.003236430038414,
-            "lon": 79.82673455293126,
+            "lat": 6.9288,
+            "lon": 79.8576,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "w2",
             "name": "Negombo Beach",
             "desc": "Golden sands near airport.",
-            "lat": 6.9618112406874895,
-            "lon": 79.77517327907647,
+            "lat": 7.2111,
+            "lon": 79.8448,
             "img": "https://images.unsplash.com/photo-1624963145721-277432579507"
         },
         {
             "id": "w3",
             "name": "Independence Square",
             "desc": "Grand monument in Colombo.",
-            "lat": 6.748159988196028,
-            "lon": 79.99451516882532,
+            "lat": 6.9044,
+            "lon": 79.8672,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "w4",
             "name": "Galle Face Green",
             "desc": "Ocean-side urban park.",
-            "lat": 6.97326349251381,
-            "lon": 79.79593803104044,
+            "lat": 6.9275,
+            "lon": 79.8445,
             "img": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8"
         },
         {
             "id": "w5",
             "name": "Mount Lavinia",
             "desc": "Colonial charm beach resort.",
-            "lat": 7.082099794048624,
-            "lon": 79.71311253392416,
+            "lat": 6.8352,
+            "lon": 79.8633,
             "img": "https://images.unsplash.com/photo-1569670380685-4582bf29a24a"
         },
         {
@@ -1498,10 +1498,10 @@ const fetchNearbyData = async (lat: number, lon: number) => {
     const query = `
     [out:json];
     (
-      nwr["tourism"~"hotel|guest_house|resort|hostel"](around:5000, ${lat}, ${lon});
-      nwr["amenity"~"restaurant|cafe|fast_food|bar"](around:5000, ${lat}, ${lon});
+      nwr["tourism"~"hotel|guest_house|resort|hostel|apartment"](around:10000, ${lat}, ${lon});
+      nwr["amenity"~"restaurant|cafe|fast_food|bar|food_court|pub"](around:10000, ${lat}, ${lon});
     );
-    out center 40;
+    out center 50;
   `;
     const res = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
     const json = await res.json();
@@ -1533,8 +1533,8 @@ export default function ProvincialExplorer() {
         setSelectedPlace(null);
     };
 
-    const hotels = poiData?.filter((p: any) => p.tags.tourism === 'hotel' || p.tags.tourism === 'resort') || [];
-    const restaurants = poiData?.filter((p: any) => p.tags.amenity === 'restaurant' || p.tags.amenity === 'cafe') || [];
+    const hotels = poiData?.filter((p: any) => p.tags.tourism && ['hotel', 'resort', 'guest_house', 'hostel', 'apartment'].includes(p.tags.tourism)) || [];
+    const restaurants = poiData?.filter((p: any) => p.tags.amenity && ['restaurant', 'cafe', 'fast_food', 'bar', 'food_court', 'pub'].includes(p.tags.amenity)) || [];
 
     return (
         <div className={`section ${styles.container}`} id="map">
