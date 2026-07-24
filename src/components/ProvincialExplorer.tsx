@@ -2,10 +2,15 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, ChevronLeft, Hotel, Utensils, Loader2, Info, Image as ImageIcon } from 'lucide-react';
+import { MapPin, ChevronLeft, Hotel, Utensils, Loader2, Info, Image as ImageIcon, Search, List, Home, Beer, Plus, Check, X, Plane, CalendarDays, StickyNote, Trash2, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchWikiBatch, WikiData } from '@/lib/wiki';
+import { fetchWikiBatch } from '@/lib/wiki';
+
 import styles from './ProvincialExplorer.module.css';
+import citiesDataRaw from '@/data/cities.json';
+
+
+const citiesData = citiesDataRaw as Record<string, { id: string, name: string, cities: { id: string, name: string, lat: number, lon: number }[] }[]>;
 
 interface Place {
     id: string;
@@ -16,11 +21,25 @@ interface Place {
     img: string;
 }
 
+interface TripItem {
+    place: Place;
+    day: number;
+    note: string;
+}
+
 interface Province {
     id: string;
     name: string;
     image: string;
 }
+
+const FILTERS = [
+    { id: 'all', label: 'All Places', icon: List, tags: [] },
+    { id: 'hotels', label: 'Hotels', icon: Hotel, tags: ['hotel', 'resort'] },
+    { id: 'inns', label: 'Inns & More', icon: Home, tags: ['guest_house', 'hostel', 'apartment', 'chalet', 'motel', 'camp_site'] },
+    { id: 'restaurants', label: 'Restaurants', icon: Utensils, tags: ['restaurant', 'food_court'] },
+    { id: 'pubs', label: 'Pubs & Cafes', icon: Beer, tags: ['pub', 'bar', 'cafe', 'fast_food'] },
+];
 
 const PROVINCES: Province[] = [
     { id: 'central', name: 'Central', image: 'https://images.unsplash.com/photo-1651264042769-ef84e30f4ac8?q=80&w=800' },
@@ -1497,12 +1516,12 @@ const PLACES: Record<string, Place[]> = {
 
 const fetchNearbyData = async (lat: number, lon: number) => {
     const query = `
-    [out:json];
+    [out:json][timeout:15];
     (
-      nwr["tourism"~"hotel|guest_house|resort|hostel|apartment"](around:10000, ${lat}, ${lon});
-      nwr["amenity"~"restaurant|cafe|fast_food|bar|food_court|pub"](around:10000, ${lat}, ${lon});
+      nwr["tourism"~"hotel|guest_house|resort|hostel|apartment|chalet|motel|camp_site"](around:5000, ${lat}, ${lon});
+      nwr["amenity"~"restaurant|cafe|fast_food|bar|food_court|pub"](around:5000, ${lat}, ${lon});
     );
-    out center 50;
+    out center 500;
   `;
     const res = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
     const json = await res.json();
@@ -1512,12 +1531,63 @@ const fetchNearbyData = async (lat: number, lon: number) => {
 export default function ProvincialExplorer() {
     const [selectedProv, setSelectedProv] = useState<string | null>(null);
     const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
-    const [tab, setTab] = useState('hotels');
+    const [tab, setTab] = useState('all');
     const [showAllPlaces, setShowAllPlaces] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [expandedPoiId, setExpandedPoiId] = useState<number | null>(null);
+    const [dynamicPlaces, setDynamicPlaces] = useState<Place[]>([]);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    
+    // New Explore Mode states
+    const [exploreMode, setExploreMode] = useState<'famous' | 'cities'>('famous');
+    const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
+    const [citySearch, setCitySearch] = useState('');
+
+    // Trip Planner state
+    const [tripItems, setTripItems] = useState<TripItem[]>([]);
+    const [isTripOpen, setIsTripOpen] = useState(false);
+    const [tripTitle, setTripTitle] = useState('My Sri Lanka Trip');
+    const [tripStartDate, setTripStartDate] = useState('');
+    const [tripEndDate, setTripEndDate] = useState('');
+    const [itineraryView, setItineraryView] = useState(false);
+    const [expandedNoteId, setExpandedNoteId] = useState<string | null>(null);
+
+    const addToTrip = (place: Place) => {
+        if (tripItems.find(t => t.place.id === place.id)) return;
+        const nextDay = tripItems.length > 0 ? Math.max(...tripItems.map(t => t.day)) + 1 : 1;
+        setTripItems(prev => [...prev, { place, day: nextDay, note: '' }]);
+        setIsTripOpen(true);
+    };
+
+    const removeFromTrip = (placeId: string) => {
+        setTripItems(prev => prev.filter(t => t.place.id !== placeId));
+    };
+
+    const updateDay = (placeId: string, day: number) => {
+        setTripItems(prev => prev.map(t => t.place.id === placeId ? { ...t, day: Math.max(1, day) } : t));
+    };
+
+    const updateNote = (placeId: string, note: string) => {
+        setTripItems(prev => prev.map(t => t.place.id === placeId ? { ...t, note } : t));
+    };
+
+    const sortedTripItems = useMemo(() =>
+        [...tripItems].sort((a, b) => a.day - b.day),
+    [tripItems]);
+
+    const groupedByDay = useMemo(() => {
+        const groups: Record<number, TripItem[]> = {};
+        sortedTripItems.forEach(item => {
+            if (!groups[item.day]) groups[item.day] = [];
+            groups[item.day].push(item);
+        });
+        return groups;
+    }, [sortedTripItems]);
 
     // Fetch live data (images, descriptions) for all landmarks in the current province
     const provincePlaces = useMemo(() => (selectedProv ? (PLACES[selectedProv] || []) : []), [selectedProv]);
-    const wikiTitles = useMemo(() => provincePlaces.map(p => p.name), [provincePlaces]);
+    const allProvincePlaces = useMemo(() => [...provincePlaces, ...dynamicPlaces], [provincePlaces, dynamicPlaces]);
+    const wikiTitles = useMemo(() => allProvincePlaces.map(p => p.name), [allProvincePlaces]);
 
     const { data: wikiBatch, isLoading: isWikiLoading } = useQuery({
         queryKey: ['wikiBatch', selectedProv],
@@ -1528,7 +1598,7 @@ export default function ProvincialExplorer() {
 
     // Merge static data with live wiki data
     const enrichedPlaces = useMemo(() => {
-        return provincePlaces.map(place => {
+        return allProvincePlaces.map(place => {
             const liveData = wikiBatch?.[place.name];
             return {
                 ...place,
@@ -1538,7 +1608,7 @@ export default function ProvincialExplorer() {
                 lon: liveData?.lon || place.lon
             };
         });
-    }, [provincePlaces, wikiBatch]);
+    }, [allProvincePlaces, wikiBatch]);
 
     const { data: poiData, isLoading } = useQuery({
         queryKey: ['nearbyPOIs', selectedPlace?.id],
@@ -1552,15 +1622,74 @@ export default function ProvincialExplorer() {
         const provincePlaces = PLACES[id] || [];
         setSelectedPlace(provincePlaces[0] || null);
         setShowAllPlaces(false);
+        setSearchQuery('');
+        setExpandedPoiId(null);
+        setDynamicPlaces([]);
+        setExploreMode('famous');
+        setSelectedDistrict(null);
+        setCitySearch('');
     };
 
     const handleBack = () => {
         setSelectedProv(null);
         setSelectedPlace(null);
+        setSearchQuery('');
+        setExpandedPoiId(null);
+        setDynamicPlaces([]);
+        setExploreMode('famous');
+        setSelectedDistrict(null);
+        setCitySearch('');
     };
 
-    const hotels = poiData?.filter((p: any) => p.tags.tourism && ['hotel', 'resort', 'guest_house', 'hostel', 'apartment'].includes(p.tags.tourism)) || [];
-    const restaurants = poiData?.filter((p: any) => p.tags.amenity && ['restaurant', 'cafe', 'fast_food', 'bar', 'food_court', 'pub'].includes(p.tags.amenity)) || [];
+    const handleLoadMorePlaces = async () => {
+        if (!selectedPlace) return;
+        setIsLoadingMore(true);
+        try {
+            const res = await fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&list=geosearch&gscoord=${selectedPlace.lat}|${selectedPlace.lon}&gsradius=10000&gslimit=20&format=json`);
+            const data = await res.json();
+            
+            if (data.query?.geosearch) {
+                const newPlaces = data.query.geosearch.map((item: any) => ({
+                    id: `dynamic-${item.pageid}`,
+                    name: item.title,
+                    desc: 'Loading details from Wikipedia...',
+                    lat: item.lat,
+                    lon: item.lon,
+                    img: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8' // Default fallback
+                }));
+                
+                const existingNames = new Set(allProvincePlaces.map(p => p.name));
+                const uniqueNew = newPlaces.filter((p: any) => !existingNames.has(p.name));
+                
+                setDynamicPlaces(prev => [...prev, ...uniqueNew]);
+                setShowAllPlaces(true); // Auto expand to show new places
+            }
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setIsLoadingMore(false);
+        }
+    };
+
+    const filteredPOIs = useMemo(() => {
+        if (!poiData) return [];
+        
+        // Filter by category
+        let categoryFiltered = poiData;
+        const currentFilter = FILTERS.find(f => f.id === tab);
+        
+        if (currentFilter && currentFilter.id !== 'all') {
+            categoryFiltered = poiData.filter((p: any) => 
+                (p.tags.tourism && currentFilter.tags.includes(p.tags.tourism)) ||
+                (p.tags.amenity && currentFilter.tags.includes(p.tags.amenity))
+            );
+        }
+        
+        // Filter by search query
+        return categoryFiltered.filter((p: any) => 
+            p.tags.name?.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    }, [poiData, tab, searchQuery]);
 
     return (
         <div className={`section ${styles.container}`} id="map">
@@ -1600,48 +1729,141 @@ export default function ProvincialExplorer() {
                         exit={{ opacity: 0, scale: 0.95 }}
                         className={styles.placesContainer}
                     >
-                        <button className={styles.backBtn} onClick={handleBack}>
-                            <ChevronLeft size={20} /> Back to Provinces
-                        </button>
-
-                        <div className={styles.placesLayout}>
-                            <div className={styles.placesList}>
-                                <h3 className={styles.title} style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>
-                                    Famous Places in {PROVINCES.find(p => p.id === selectedProv)?.name}
-                                </h3>
-                                 {enrichedPlaces.slice(0, showAllPlaces ? 20 : 4).map(place => (
-                                    <motion.div
-                                        key={place.id}
-                                        className={`${styles.placeCard} ${selectedPlace?.id === place.id ? styles.placeCardActive : ''}`}
-                                        onClick={() => setSelectedPlace(place)}
-                                        whileHover={{ scale: 1.02 }}
+                        <div className={styles.provinceHeader}>
+                                <button className={styles.backBtn} onClick={handleBack} style={{ marginBottom: '1rem' }}>
+                                    <ChevronLeft size={20} style={{ display: 'inline' }} /> Back to Provinces
+                                </button>
+                                
+                                <div className={styles.modeToggle}>
+                                    <button 
+                                        className={exploreMode === 'famous' ? styles.modeActive : ''} 
+                                        onClick={() => setExploreMode('famous')}
                                     >
-                                        <div className={styles.placeImgWrapper}>
-                                            <img src={place.img} alt={place.name} className={styles.placeImg} />
-                                            {isWikiLoading && !wikiBatch?.[place.name] && (
-                                                <div className={styles.imageLoader}>
-                                                    <Loader2 size={24} className="animate-spin" />
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className={styles.placeContent}>
-                                            <h4 className={styles.placeTitle}>{place.name}</h4>
-                                            <p className={styles.placeDesc}>{place.desc}</p>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                                {PLACES[selectedProv]?.length > 4 && !showAllPlaces && (
-                                    <button
-                                        className={styles.showMoreBtn}
-                                        onClick={() => setShowAllPlaces(true)}
-                                    >
-                                        Show All (+{(PLACES[selectedProv]?.length || 0) - 4}) Places
+                                        Famous Places
                                     </button>
-                                )}
+                                    <button 
+                                        className={exploreMode === 'cities' ? styles.modeActive : ''} 
+                                        onClick={() => {
+                                            setExploreMode('cities');
+                                            const dists = citiesData[selectedProv!] || [];
+                                            if (dists.length > 0 && !selectedDistrict) {
+                                                setSelectedDistrict(dists[0].id);
+                                            }
+                                        }}
+                                    >
+                                        Explore by City
+                                    </button>
+                                </div>
                             </div>
 
-                            <div className={styles.dataView}>
-                                <div className={styles.dataHeader}>
+                            <div className={styles.placesLayout}>
+                                {exploreMode === 'famous' ? (
+                                    <div className={styles.placesList}>
+                                        {enrichedPlaces.map(place => {
+                                            const isInTrip = tripItems.some(t => t.place.id === place.id);
+                                            return (
+                                            <motion.div
+                                                key={place.id}
+                                                className={`${styles.placeCard} ${selectedPlace?.id === place.id ? styles.placeCardActive : ''}`}
+                                                onClick={() => setSelectedPlace(place)}
+                                                whileHover={{ x: 4 }}
+                                                layout
+                                            >
+                                                <div className={styles.placeImgWrapper}>
+                                                    {isWikiLoading ? (
+                                                        <div className={styles.imageLoader}>
+                                                            <ImageIcon size={24} />
+                                                        </div>
+                                                    ) : (
+                                                        <img src={place.img} alt={place.name} className={styles.placeImg} />
+                                                    )}
+                                                </div>
+                                                <div className={styles.placeContent}>
+                                                    <h4 className={styles.placeTitle}>{place.name}</h4>
+                                                    <p className={styles.placeDesc}>{place.desc}</p>
+                                                    <button
+                                                        className={`${styles.addToTripBtn} ${isInTrip ? styles.addedToTrip : ''}`}
+                                                        onClick={(e) => { e.stopPropagation(); addToTrip(place); }}
+                                                    >
+                                                        {isInTrip ? <><Check size={13} /> Added</> : <><Plus size={13} /> Add to Trip</>}
+                                                    </button>
+                                                </div>
+                                            </motion.div>
+                                            );
+                                        })}
+                                        <button
+                                            className={styles.discoverMoreBtn}
+                                            onClick={handleLoadMorePlaces}
+                                            disabled={isLoadingMore}
+                                        >
+                                            {isLoadingMore ? (
+                                                <><Loader2 size={16} className="animate-spin" style={{ display: 'inline', marginRight: '6px' }} /> Discovering Nearby Places...</>
+                                            ) : (
+                                                <>✦ Discover More Places Near {selectedPlace?.name}</>
+                                            )}
+                                        </button>
+                                    </div>
+                                
+                                ) : (
+                                    <div className={styles.cityExplorer}>
+                                        <div className={styles.districtSelector}>
+                                            <label>Select District:</label>
+                                            <select 
+                                                value={selectedDistrict || ''} 
+                                                onChange={(e) => {
+                                                    setSelectedDistrict(e.target.value);
+                                                    setCitySearch('');
+                                                }}
+                                            >
+                                                {(citiesData[selectedProv!] || []).map(d => (
+                                                    <option key={d.id} value={d.id}>{d.name} District</option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        <div className={styles.searchContainer}>
+                                            <Search size={16} className={styles.searchIcon} />
+                                            <input
+                                                type="text"
+                                                className={styles.searchInput}
+                                                placeholder="Search cities..."
+                                                value={citySearch}
+                                                onChange={(e) => setCitySearch(e.target.value)}
+                                            />
+                                        </div>
+
+                                        <div className={styles.cityList}>
+                                            {(() => {
+                                                const dist = (citiesData[selectedProv!] || []).find(d => d.id === selectedDistrict);
+                                                if (!dist) return null;
+                                                const filtered = dist.cities.filter(c => c.name.toLowerCase().includes(citySearch.toLowerCase()));
+                                                
+                                                if (filtered.length === 0) return <div className={styles.emptyState}>No cities found.</div>;
+                                                
+                                                return filtered.map(city => (
+                                                    <button 
+                                                        key={city.id}
+                                                        className={`${styles.cityBtn} ${selectedPlace?.id === `city-${city.id}` ? styles.cityBtnActive : ''}`}
+                                                        onClick={() => setSelectedPlace({
+                                                            id: `city-${city.id}`,
+                                                            name: city.name,
+                                                            desc: `${city.name} is a city located in the ${dist.name} District of the ${PROVINCES.find(p => p.id === selectedProv)?.name} Province.`,
+                                                            lat: city.lat,
+                                                            lon: city.lon,
+                                                            img: 'https://images.unsplash.com/photo-1569670380685-4582bf29a24a'
+                                                        })}
+                                                    >
+                                                        <MapPin size={16} />
+                                                        {city.name}
+                                                    </button>
+                                                ));
+                                            })()}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className={styles.dataView}>
+                                    <div className={styles.dataHeader}>
                                     <h4 className={styles.dataTitle}>Near {selectedPlace?.name}</h4>
                                     
                                     {enrichedPlaces.find(p => p.id === selectedPlace?.id)?.desc && (
@@ -1652,18 +1874,29 @@ export default function ProvincialExplorer() {
                                     )}
 
                                     <div className={styles.dataTabs}>
-                                        <button
-                                            className={`${styles.tab} ${tab === 'hotels' ? styles.tabActive : ''}`}
-                                            onClick={() => setTab('hotels')}
-                                        >
-                                            <Hotel size={16} style={{ display: 'inline', marginRight: '6px' }} /> Hotels
-                                        </button>
-                                        <button
-                                            className={`${styles.tab} ${tab === 'restaurants' ? styles.tabActive : ''}`}
-                                            onClick={() => setTab('restaurants')}
-                                        >
-                                            <Utensils size={16} style={{ display: 'inline', marginRight: '6px' }} /> Dining
-                                        </button>
+                                        {FILTERS.map(f => {
+                                            const Icon = f.icon;
+                                            return (
+                                                <button
+                                                    key={f.id}
+                                                    className={`${styles.tab} ${tab === f.id ? styles.tabActive : ''}`}
+                                                    onClick={() => { setTab(f.id); setSearchQuery(''); setExpandedPoiId(null); }}
+                                                >
+                                                    <Icon size={16} style={{ display: 'inline', marginRight: '6px' }} /> {f.label}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                    
+                                    <div className={styles.searchContainer}>
+                                        <Search size={16} className={styles.searchIcon} />
+                                        <input
+                                            type="text"
+                                            className={styles.searchInput}
+                                            placeholder="Search places..."
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                        />
                                     </div>
                                 </div>
 
@@ -1674,34 +1907,272 @@ export default function ProvincialExplorer() {
                                     </div>
                                 ) : (
                                     <div className={styles.poiList}>
-                                        {tab === 'hotels' && hotels.length === 0 && (
-                                            <div className={styles.emptyState}>No hotels found within 5km.</div>
-                                        )}
-                                        {tab === 'restaurants' && restaurants.length === 0 && (
-                                            <div className={styles.emptyState}>No restaurants found within 5km.</div>
+                                        {filteredPOIs.length === 0 && (
+                                            <div className={styles.emptyState}>
+                                                No places found matching "{searchQuery}" within 5km.
+                                            </div>
                                         )}
 
-                                        {(tab === 'hotels' ? hotels : restaurants).map((poi: any) => (
-                                            <motion.div
-                                                key={poi.id}
-                                                initial={{ opacity: 0, x: 20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                className={styles.poiCard}
-                                            >
-                                                <div className={styles.poiIcon}>
-                                                    {tab === 'hotels' ? <Hotel size={24} /> : <Utensils size={24} />}
-                                                </div>
-                                                <div className={styles.poiInfo}>
-                                                    <h5>{poi.tags.name}</h5>
-                                                    <p><MapPin size={12} style={{ display: 'inline' }} /> Live Coordinates ({Math.abs(selectedPlace!.lat - (poi.lat || poi.center?.lat || 0)).toFixed(3)}° offset)</p>
-                                                </div>
-                                            </motion.div>
-                                        ))}
+                                        {filteredPOIs.map((poi: any) => {
+                                            let PoiIcon = Hotel;
+                                            if (poi.tags.amenity) {
+                                                if (['pub', 'bar', 'cafe', 'fast_food'].includes(poi.tags.amenity)) PoiIcon = Beer;
+                                                else PoiIcon = Utensils;
+                                            } else if (poi.tags.tourism) {
+                                                if (['guest_house', 'hostel', 'apartment', 'chalet', 'motel', 'camp_site'].includes(poi.tags.tourism)) PoiIcon = Home;
+                                                else PoiIcon = Hotel;
+                                            }
+
+                                            const lat = poi.lat || poi.center?.lat || 0;
+                                            const lon = poi.lon || poi.center?.lon || 0;
+                                            const mapUrl = `https://maps.google.com/maps?q=${lat},${lon}&hl=en&z=15&output=embed`;
+
+                                            return (
+                                                <motion.div
+                                                    key={poi.id}
+                                                    initial={{ opacity: 0, x: 20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    className={`${styles.poiCard} ${expandedPoiId === poi.id ? styles.poiCardExpanded : ''}`}
+                                                    onClick={() => setExpandedPoiId(expandedPoiId === poi.id ? null : poi.id)}
+                                                    layout
+                                                >
+                                                    <div className={styles.poiCardHeader}>
+                                                        <div className={styles.poiIcon}>
+                                                            <PoiIcon size={24} />
+                                                        </div>
+                                                        <div className={styles.poiInfo}>
+                                                            <h5>{poi.tags.name}</h5>
+                                                            <p><MapPin size={12} style={{ display: 'inline' }} /> Live Coordinates ({Math.abs(selectedPlace!.lat - lat).toFixed(3)}° offset)</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <AnimatePresence>
+                                                        {expandedPoiId === poi.id && (
+                                                            <motion.div 
+                                                                initial={{ opacity: 0, height: 0 }}
+                                                                animate={{ opacity: 1, height: 'auto' }}
+                                                                exit={{ opacity: 0, height: 0 }}
+                                                                className={styles.poiMapContainer}
+                                                            >
+                                                                <iframe 
+                                                                    src={mapUrl} 
+                                                                    width="100%" 
+                                                                    height="200" 
+                                                                    style={{ border: 0, borderRadius: '8px' }} 
+                                                                    allowFullScreen 
+                                                                    loading="lazy" 
+                                                                    referrerPolicy="no-referrer-when-downgrade"
+                                                                ></iframe>
+                                                                <a 
+                                                                    href={`https://www.google.com/maps/search/?api=1&query=${lat},${lon}`} 
+                                                                    target="_blank" 
+                                                                    rel="noopener noreferrer"
+                                                                    className={styles.mapLink}
+                                                                    onClick={(e) => e.stopPropagation()}
+                                                                >
+                                                                    <MapPin size={16} style={{ display: 'inline' }} /> Open in Google Maps
+                                                                </a>
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </motion.div>
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </div>
                         </div>
                     </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* ── Floating Trip Badge ── */}
+            <AnimatePresence>
+                {tripItems.length > 0 && (
+                    <motion.button
+                        className={styles.tripBadge}
+                        onClick={() => { setIsTripOpen(true); setItineraryView(false); }}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.96 }}
+                    >
+                        <Plane size={18} />
+                        <span>My Trip</span>
+                        <span className={styles.tripCount}>{tripItems.length}</span>
+                    </motion.button>
+                )}
+            </AnimatePresence>
+
+            {/* ── Trip Planner Drawer ── */}
+            <AnimatePresence>
+                {isTripOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            className={styles.drawerBackdrop}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsTripOpen(false)}
+                        />
+
+                        {/* Drawer Panel */}
+                        <motion.div
+                            className={styles.drawer}
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+                        >
+                            {/* Drawer Header */}
+                            <div className={styles.drawerHeader}>
+                                <div className={styles.drawerHeaderLeft}>
+                                    <Plane size={22} className={styles.drawerIcon} />
+                                    <div>
+                                        <h3 className={styles.drawerTitle}>Trip Planner</h3>
+                                        <p className={styles.drawerSub}>{tripItems.length} stop{tripItems.length !== 1 ? 's' : ''} added</p>
+                                    </div>
+                                </div>
+                                <button className={styles.drawerClose} onClick={() => setIsTripOpen(false)}>
+                                    <X size={20} />
+                                </button>
+                            </div>
+
+                            {!itineraryView ? (
+                                <>
+                                    {/* Trip Meta */}
+                                    <div className={styles.tripMeta}>
+                                        <div className={styles.tripField}>
+                                            <label>Trip Name</label>
+                                            <input
+                                                type="text"
+                                                value={tripTitle}
+                                                onChange={e => setTripTitle(e.target.value)}
+                                                className={styles.tripInput}
+                                                placeholder="My Sri Lanka Adventure"
+                                            />
+                                        </div>
+                                        <div className={styles.tripDates}>
+                                            <div className={styles.tripField}>
+                                                <label><CalendarDays size={13} style={{display:'inline',marginRight:'4px'}} />From</label>
+                                                <input type="date" value={tripStartDate} onChange={e => setTripStartDate(e.target.value)} className={styles.tripInput} />
+                                            </div>
+                                            <div className={styles.tripField}>
+                                                <label><CalendarDays size={13} style={{display:'inline',marginRight:'4px'}} />To</label>
+                                                <input type="date" value={tripEndDate} onChange={e => setTripEndDate(e.target.value)} className={styles.tripInput} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Stop List */}
+                                    <div className={styles.stopList}>
+                                        <AnimatePresence>
+                                            {tripItems.length === 0 && (
+                                                <motion.div className={styles.emptyTrip} initial={{opacity:0}} animate={{opacity:1}}>
+                                                    <Plane size={36} style={{opacity:0.25}} />
+                                                    <p>No stops yet.<br/>Browse places and click <strong>+ Add to Trip</strong>.</p>
+                                                </motion.div>
+                                            )}
+                                            {tripItems.map((item) => (
+                                                <motion.div
+                                                    key={item.place.id}
+                                                    className={styles.stopCard}
+                                                    initial={{ opacity: 0, y: 12 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, x: 40 }}
+                                                    layout
+                                                >
+                                                    <img src={item.place.img} alt={item.place.name} className={styles.stopImg} />
+                                                    <div className={styles.stopBody}>
+                                                        <div className={styles.stopRow}>
+                                                            <span className={styles.stopName}>{item.place.name}</span>
+                                                            <button className={styles.stopRemove} onClick={() => removeFromTrip(item.place.id)}>
+                                                                <Trash2 size={14} />
+                                                            </button>
+                                                        </div>
+                                                        <div className={styles.stopDayRow}>
+                                                            <span className={styles.stopDayLabel}>Day</span>
+                                                            <button className={styles.dayBtn} onClick={() => updateDay(item.place.id, item.day - 1)}><ChevronDown size={14}/></button>
+                                                            <span className={styles.dayNum}>{item.day}</span>
+                                                            <button className={styles.dayBtn} onClick={() => updateDay(item.place.id, item.day + 1)}><ChevronUp size={14}/></button>
+                                                        </div>
+                                                        <button
+                                                            className={styles.noteToggle}
+                                                            onClick={() => setExpandedNoteId(expandedNoteId === item.place.id ? null : item.place.id)}
+                                                        >
+                                                            <StickyNote size={12} /> {expandedNoteId === item.place.id ? 'Hide note' : 'Add note'}
+                                                        </button>
+                                                        <AnimatePresence>
+                                                            {expandedNoteId === item.place.id && (
+                                                                <motion.textarea
+                                                                    initial={{ height: 0, opacity: 0 }}
+                                                                    animate={{ height: 70, opacity: 1 }}
+                                                                    exit={{ height: 0, opacity: 0 }}
+                                                                    className={styles.noteInput}
+                                                                    placeholder="Notes for this stop…"
+                                                                    value={item.note}
+                                                                    onChange={e => updateNote(item.place.id, e.target.value)}
+                                                                />
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+                                        </AnimatePresence>
+                                    </div>
+
+                                    {/* Generate Button */}
+                                    {tripItems.length > 0 && (
+                                        <motion.button
+                                            className={styles.generateBtn}
+                                            onClick={() => setItineraryView(true)}
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                        >
+                                            <Sparkles size={18} /> Generate Itinerary
+                                        </motion.button>
+                                    )}
+                                </>
+                            ) : (
+                                /* ── Generated Itinerary View ── */
+                                <div className={styles.itineraryView}>
+                                    <button className={styles.backToEdit} onClick={() => setItineraryView(false)}>
+                                        <ChevronLeft size={16} /> Edit Trip
+                                    </button>
+                                    <div className={styles.itinHeader}>
+                                        <h2 className={styles.itinTitle}>{tripTitle}</h2>
+                                        {tripStartDate && tripEndDate && (
+                                            <p className={styles.itinDates}><CalendarDays size={14} style={{display:'inline',marginRight:'6px'}} />{tripStartDate} → {tripEndDate}</p>
+                                        )}
+                                    </div>
+                                    {Object.entries(groupedByDay).map(([day, items]) => (
+                                        <div key={day} className={styles.itinDayBlock}>
+                                            <div className={styles.itinDayLabel}>Day {day}</div>
+                                            {(items as TripItem[]).map((item, idx) => (
+                                                <motion.div
+                                                    key={item.place.id}
+                                                    className={styles.itinStop}
+                                                    initial={{ opacity: 0, x: -16 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: idx * 0.08 }}
+                                                >
+                                                    <div className={styles.itinDot} />
+                                                    <img src={item.place.img} alt={item.place.name} className={styles.itinImg} />
+                                                    <div className={styles.itinStopBody}>
+                                                        <h4 className={styles.itinStopName}>{item.place.name}</h4>
+                                                        <p className={styles.itinStopDesc}>{item.place.desc}</p>
+                                                        {item.note && <p className={styles.itinNote}><StickyNote size={12} style={{display:'inline',marginRight:'4px'}}/>{item.note}</p>}
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </div>
