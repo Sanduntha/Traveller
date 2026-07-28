@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Search, ChevronDown } from 'lucide-react';
+import { Sparkles, Search } from 'lucide-react';
 import styles from './VortexHero.module.css';
 import { useState, useEffect } from 'react';
 
@@ -212,22 +212,6 @@ export default function VortexHero() {
                     />
                 ))}
             </div>
-
-            {/* ── Scroll indicator ── */}
-            <motion.div
-                className={styles.scrollIndicator}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
-            >
-                <span className={styles.scrollText}>Scroll to explore</span>
-                <motion.div
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                    <ChevronDown size={20} color="rgba(255,255,255,0.55)" />
-                </motion.div>
-            </motion.div>
         </section>
     );
 }

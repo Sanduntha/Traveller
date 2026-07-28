@@ -431,7 +431,7 @@
 /* ─ Video Dots (bottom-center) ─ */
 .videoDots {
     position: absolute;
-    bottom: 5.5rem;
+    bottom: 6.8rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -455,26 +455,6 @@
     background: #D4AF37;
     width: 42px;
     box-shadow: 0 0 8px rgba(212, 175, 55, 0.65);
-}
-
-/* ─ Scroll Indicator ─ */
-.scrollIndicator {
-    position: absolute;
-    bottom: 2.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.scrollText {
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.45);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
 }
 
 /* ─ Responsive ─ */
