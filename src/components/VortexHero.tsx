@@ -1,9 +1,9 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Search, ChevronDown, Volume2, VolumeX } from 'lucide-react';
+import { Sparkles, Search, ChevronDown } from 'lucide-react';
 import styles from './VortexHero.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 /* ── Sri Lanka 4K YouTube videos ── */
 const VIDEOS = [
@@ -18,26 +18,25 @@ const CAPTIONS = [
     'Timeless Pearl of the Indian Ocean',
 ];
 
-function buildEmbedUrl(videoId: string, start: number, muted: boolean) {
+function buildEmbedUrl(videoId: string, start: number) {
     const params = new URLSearchParams({
-        autoplay:       '1',
-        mute:           muted ? '1' : '0',
-        controls:       '0',        // hide bottom control bar
-        disablekb:      '1',        // disable keyboard shortcuts
-        fs:             '0',        // hide fullscreen button
-        iv_load_policy: '3',        // hide annotations
-        loop:           '1',        // loop video
-        modestbranding: '1',        // minimal YouTube branding
-        playsinline:    '1',        // play inline on iOS
-        rel:            '0',        // no related videos at end
-        showinfo:       '0',        // hide video title/uploader
-        start:          String(start),
-        playlist:       videoId,    // required for loop=1
-        cc_load_policy: '0',        // no captions
-        hl:             'en',
+        autoplay:        '1',
+        mute:            '1',           // always muted — required for browser autoplay
+        controls:        '0',           // hide bottom control bar
+        disablekb:       '1',           // disable keyboard shortcuts
+        fs:              '0',           // hide fullscreen button
+        iv_load_policy:  '3',           // hide annotations
+        loop:            '1',           // loop video
+        modestbranding:  '1',           // minimal YouTube branding
+        playsinline:     '1',           // play inline on iOS
+        rel:             '0',           // no related videos at end
+        showinfo:        '0',           // hide video title/uploader
+        start:           String(start),
+        playlist:        videoId,       // required for loop=1
+        cc_load_policy:  '0',           // no captions
+        hl:              'en',
         widget_referrer: 'http://localhost:3000',
     });
-    // youtube-nocookie.com avoids tracking cookies and suppresses more UI
     return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
 }
 
@@ -45,9 +44,7 @@ export default function VortexHero() {
     const [query,        setQuery]        = useState('');
     const [captionIndex, setCaptionIndex] = useState(0);
     const [videoIndex,   setVideoIndex]   = useState(0);
-    const [isMuted,      setIsMuted]      = useState(true);
     const [loaded,       setLoaded]       = useState(false);
-    const iframeRef = useRef<HTMLIFrameElement>(null);
 
     /* Cycle rotating captions */
     useEffect(() => {
@@ -55,9 +52,8 @@ export default function VortexHero() {
         return () => clearInterval(t);
     }, []);
 
-    /* Mark iframe as loaded after a buffer long enough for autoplay to start.
-     * 5 seconds guarantees the video is playing before we reveal it,
-     * so YouTube's play/pause/skip buttons are never visible. */
+    /* Keep fallback visible for 5 s — by then YouTube is playing
+     * and its play/pause/skip buttons are gone before we reveal the iframe. */
     useEffect(() => {
         setLoaded(false);
         const t = setTimeout(() => setLoaded(true), 5000);
@@ -71,15 +67,14 @@ export default function VortexHero() {
 
             {/* ── Video Background ── */}
             <div className={styles.videoBg}>
-                {/* Fallback gradient (visible until iframe fades in) */}
+                {/* Fallback gradient — shown for 5 s while YouTube loads */}
                 <div className={`${styles.fallbackBg} ${loaded ? styles.fallbackHidden : ''}`} />
 
-                {/* YouTube iframe — no JS API needed, just embed URL params */}
+                {/* YouTube iframe — always muted, autoplays on load */}
                 <iframe
-                    ref={iframeRef}
-                    key={`${currentVideo.id}-${isMuted ? 'm' : 'u'}`}
+                    key={currentVideo.id}
                     className={`${styles.ytFrame} ${loaded ? styles.ytFrameVisible : ''}`}
-                    src={buildEmbedUrl(currentVideo.id, currentVideo.start, isMuted)}
+                    src={buildEmbedUrl(currentVideo.id, currentVideo.start)}
                     title="Sri Lanka scenic background video"
                     allow="autoplay; encrypted-media"
                     allowFullScreen={false}
@@ -205,30 +200,17 @@ export default function VortexHero() {
                 </motion.div>
             </div>
 
-            {/* ── Controls: mute + video dots ── */}
-            <div className={styles.controls}>
-                {/* Mute toggle */}
-                <button
-                    className={styles.muteBtn}
-                    onClick={() => setIsMuted(m => !m)}
-                    aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-                    title={isMuted ? 'Unmute' : 'Mute'}
-                >
-                    {isMuted ? <VolumeX size={17} /> : <Volume2 size={17} />}
-                </button>
-
-                {/* Video selector dots */}
-                <div className={styles.videoDots}>
-                    {VIDEOS.map((v, i) => (
-                        <button
-                            key={v.id}
-                            className={`${styles.videoDot} ${i === videoIndex ? styles.videoDotActive : ''}`}
-                            onClick={() => setVideoIndex(i)}
-                            title={v.label}
-                            aria-label={`Play: ${v.label}`}
-                        />
-                    ))}
-                </div>
+            {/* ── Video selector dots ── */}
+            <div className={styles.videoDots}>
+                {VIDEOS.map((v, i) => (
+                    <button
+                        key={v.id}
+                        className={`${styles.videoDot} ${i === videoIndex ? styles.videoDotActive : ''}`}
+                        onClick={() => setVideoIndex(i)}
+                        title={v.label}
+                        aria-label={`Play: ${v.label}`}
+                    />
+                ))}
             </div>
 
             {/* ── Scroll indicator ── */}
