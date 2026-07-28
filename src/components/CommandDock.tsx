@@ -19,8 +19,8 @@ export default function CommandDock() {
     return (
         <motion.div
             className={`${styles.dockContainer} glass-container`}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ x: '-50%', y: 50, opacity: 0 }}
+            animate={{ x: '-50%', y: 0, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
         >
             {navItems.map((item) => {
