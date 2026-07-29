@@ -58,10 +58,6 @@ cd traveller
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
 ```
 
 ### 3. Set up environment variables
