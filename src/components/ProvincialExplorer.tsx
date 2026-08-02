@@ -1518,8 +1518,8 @@ const fetchNearbyData = async (lat: number, lon: number) => {
     const query = `
     [out:json][timeout:15];
     (
-      nwr["tourism"~"hotel|guest_house|resort|hostel|apartment|chalet|motel|camp_site"](around:5000, ${lat}, ${lon});
-      nwr["amenity"~"restaurant|cafe|fast_food|bar|food_court|pub"](around:5000, ${lat}, ${lon});
+      nwr["tourism"~"hotel|guest_house|resort|hostel|apartment|chalet|motel|camp_site"](around:10000, ${lat}, ${lon});
+      nwr["amenity"~"restaurant|cafe|fast_food|bar|food_court|pub"](around:10000, ${lat}, ${lon});
     );
     out center 500;
   `;
@@ -1527,6 +1527,60 @@ const fetchNearbyData = async (lat: number, lon: number) => {
     const json = await res.json();
     return json.elements.filter((e: any) => e.tags && (e.tags.name || e.tags["name:en"]));
 };
+
+function matchesCategoryFilter(p: any, filterId: string): boolean {
+    if (filterId === 'all') return true;
+    const tourism = (p.tags?.tourism || '').toLowerCase();
+    const amenity = (p.tags?.amenity || '').toLowerCase();
+    const name = (p.tags?.name || p.tags?.['name:en'] || '').toLowerCase();
+
+    if (filterId === 'hotels') {
+        return (
+            tourism === 'hotel' ||
+            tourism === 'resort' ||
+            name.includes('hotel') ||
+            name.includes('resort')
+        );
+    }
+    if (filterId === 'inns') {
+        return (
+            tourism === 'guest_house' ||
+            tourism === 'hostel' ||
+            tourism === 'apartment' ||
+            tourism === 'chalet' ||
+            tourism === 'motel' ||
+            tourism === 'camp_site' ||
+            name.includes('villa') ||
+            name.includes('guest house') ||
+            name.includes('homestay') ||
+            name.includes('inn') ||
+            name.includes('lodge') ||
+            name.includes('cottage')
+        );
+    }
+    if (filterId === 'restaurants') {
+        return (
+            amenity === 'restaurant' ||
+            amenity === 'food_court' ||
+            name.includes('restaurant') ||
+            name.includes('dining') ||
+            name.includes('eatery')
+        );
+    }
+    if (filterId === 'pubs') {
+        return (
+            amenity === 'pub' ||
+            amenity === 'bar' ||
+            amenity === 'cafe' ||
+            amenity === 'fast_food' ||
+            name.includes('cafe') ||
+            name.includes('pub') ||
+            name.includes('bar') ||
+            name.includes('coffee')
+        );
+    }
+    return true;
+}
 
 export default function ProvincialExplorer() {
     const [selectedProv, setSelectedProv] = useState<string | null>(null);
@@ -1676,13 +1730,8 @@ export default function ProvincialExplorer() {
         
         // Filter by category
         let categoryFiltered = poiData;
-        const currentFilter = FILTERS.find(f => f.id === tab);
-        
-        if (currentFilter && currentFilter.id !== 'all') {
-            categoryFiltered = poiData.filter((p: any) => 
-                (p.tags.tourism && currentFilter.tags.includes(p.tags.tourism)) ||
-                (p.tags.amenity && currentFilter.tags.includes(p.tags.amenity))
-            );
+        if (tab !== 'all') {
+            categoryFiltered = poiData.filter((p: any) => matchesCategoryFilter(p, tab));
         }
         
         // Filter by search query
@@ -1909,7 +1958,7 @@ export default function ProvincialExplorer() {
                                     <div className={styles.poiList}>
                                         {filteredPOIs.length === 0 && (
                                             <div className={styles.emptyState}>
-                                                No places found matching "{searchQuery}" within 5km.
+                                                No places found matching "{searchQuery}" within 10km.
                                             </div>
                                         )}
 
