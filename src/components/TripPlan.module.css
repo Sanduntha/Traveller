@@ -1,0 +1,787 @@
+/* ══════════════════════════════════════════════════════════════
+   TripPlan.module.css
+   Premium dark-glass itinerary planner UI
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Wrapper ── */
+.wrapper {
+    padding: 3rem 0 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+/* ── Section header ── */
+.sectionHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+}
+
+.headerIcon {
+    color: var(--color-gold);
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.sectionTitle {
+    font-size: 1.8rem;
+    font-family: var(--font-playfair), serif;
+    color: var(--color-forest);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.sectionSub {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.resetPlanBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: rgba(100, 100, 100, 0.7);
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 0.2s;
+    margin-top: 0.25rem;
+}
+
+.resetPlanBtn:hover {
+    color: var(--color-forest);
+    border-color: var(--color-forest);
+}
+
+/* ── Stop input grid ── */
+.stopInputGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stopInputCard {
+    background: rgba(6, 78, 59, 0.04);
+    border: 1px solid rgba(6, 78, 59, 0.12);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stopInputCard:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.06);
+}
+
+.stopInputHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+}
+
+.stopDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dotStart { background: #4ade80; box-shadow: 0 0 6px rgba(74, 222, 128, 0.5); }
+.dotMid   { background: var(--color-gold); box-shadow: 0 0 6px rgba(212, 175, 55, 0.4); }
+.dotEnd   { background: var(--color-forest); box-shadow: 0 0 6px rgba(6, 78, 59, 0.5); }
+
+.stopInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.stopDayTag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+}
+
+.stopNameText {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inputRow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inputLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.daysInput {
+    width: 64px;
+    text-align: center;
+    background: rgba(6, 78, 59, 0.06);
+    border: 1.5px solid rgba(6, 78, 59, 0.18);
+    border-radius: 8px;
+    padding: 0.38rem 0.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-forest);
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    /* hide number arrows */
+    -moz-appearance: textfield;
+}
+
+.daysInput::-webkit-outer-spin-button,
+.daysInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.daysInput:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.inputSuffix {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+}
+
+/* ── Generate bar ── */
+.generateBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: rgba(6, 78, 59, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 14px;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.generateBarInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+}
+
+.barIcon {
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+.barSep {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.generateBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.65rem 1.4rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(6, 78, 59, 0.25);
+}
+
+.generateBtn:hover:not(:disabled) {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.35);
+}
+
+.generateBtn:disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+.btnSpinner {
+    animation: spin 0.9s linear infinite;
+}
+
+/* ── Plan result ── */
+.planResult {
+    margin-top: 1rem;
+}
+
+/* Plan header */
+.planHeader {
+    text-align: center;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.planTitle {
+    font-family: var(--font-playfair), serif;
+    font-size: 2.2rem;
+    color: var(--color-forest);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.planRoute {
+    font-size: 0.85rem;
+    color: var(--color-gold);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* ── Summary stats ── */
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.statCard {
+    background: rgba(6, 78, 59, 0.04);
+    border: 1px solid rgba(6, 78, 59, 0.1);
+    border-radius: 14px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+.statCard:hover {
+    border-color: rgba(212, 175, 55, 0.2);
+}
+
+.statIcon {
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.statValue {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-forest);
+    font-family: var(--font-playfair), serif;
+    margin-bottom: 0.2rem;
+}
+
+.statLabel {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+/* Best months */
+.bestMonths {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(212, 175, 55, 0.07);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+}
+
+.bestIcon {
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+/* ── Subsection title ── */
+.subsectionTitle {
+    font-family: var(--font-playfair), serif;
+    font-size: 1.35rem;
+    color: var(--color-forest);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+/* ── Days grid ── */
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+/* ── Day card ── */
+.dayCard {
+    background: #fff;
+    border: 1px solid rgba(6, 78, 59, 0.1);
+    border-radius: 18px;
+    padding: 1.4rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.25s, transform 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.dayCard:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.dayHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.dayBadge {
+    background: var(--color-forest);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+}
+
+.dayLocation {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.72rem;
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.dayTitle {
+    font-family: var(--font-playfair), serif;
+    font-size: 1.05rem;
+    color: var(--color-forest);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ── Activities ── */
+.activities {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.activity {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+}
+
+.activityIcon {
+    width: 26px;
+    height: 26px;
+    background: rgba(6, 78, 59, 0.07);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-forest);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.activityLabel {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gold);
+    margin-bottom: 0.15rem;
+}
+
+.activityText {
+    font-size: 0.78rem;
+    color: var(--color-text);
+    line-height: 1.45;
+}
+
+/* ── Day footer ── */
+.dayFooter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footerItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    font-size: 0.73rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+.footerIcon {
+    color: var(--color-forest);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* ── Tip box ── */
+.tipBox {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    background: rgba(212, 175, 55, 0.07);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.72rem;
+    color: var(--color-text);
+    line-height: 1.45;
+}
+
+.tipIcon {
+    color: var(--color-gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ── Bottom grid: highlights + packing ── */
+.bottomGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.highlightsBox,
+.packingBox {
+    background: rgba(6, 78, 59, 0.03);
+    border: 1px solid rgba(6, 78, 59, 0.1);
+    border-radius: 16px;
+    padding: 1.25rem;
+}
+
+.boxTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-forest);
+    margin-bottom: 0.9rem;
+}
+
+.highlightList,
+.packingList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.highlightItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
+.highlightDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.packingItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
+.packingCheck {
+    color: #4ade80;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+}
+
+/* ── Budget row ── */
+.budgetRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.budgetCard {
+    text-align: center;
+    background: rgba(6, 78, 59, 0.03);
+    border: 1px solid rgba(6, 78, 59, 0.1);
+    border-radius: 14px;
+    padding: 1rem;
+    transition: border-color 0.2s;
+}
+
+.budgetCard:hover {
+    border-color: rgba(212, 175, 55, 0.25);
+}
+
+.budgetCardMid {
+    background: rgba(6, 78, 59, 0.07);
+    border-color: rgba(6, 78, 59, 0.18);
+}
+
+.budgetTier {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.budgetAmount {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-forest);
+    font-family: var(--font-playfair), serif;
+}
+
+/* ── Local Guide Expander Button (in DayCard) ── */
+.exploreBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.62rem 0.85rem;
+  margin-top: 0.85rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  font-family: inherit;
+}
+
+.exploreBtn:hover {
+  background: rgba(212, 175, 55, 0.16);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.15);
+}
+
+.exploreBtnLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.exploreBtnIcon {
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.exploreBtnRight {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  opacity: 0.85;
+}
+
+/* ── Expanded Local Guide Drawer ── */
+.guideDrawer {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(212, 175, 55, 0.25);
+  overflow: hidden;
+}
+
+.guideTabs {
+  display: flex;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.guideTab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.4rem;
+  background: rgba(6, 78, 59, 0.05);
+  border: 1px solid rgba(6, 78, 59, 0.15);
+  border-radius: 8px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.guideTab:hover {
+  background: rgba(6, 78, 59, 0.12);
+  color: var(--color-forest);
+}
+
+.guideTabActive {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.12);
+}
+
+.guideList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.guideCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.guideCard:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  transform: translateY(-1px);
+}
+
+.guideCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.guideCardName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-forest);
+}
+
+.guideCardTag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.18rem 0.45rem;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.guideCardDesc {
+  font-size: 0.75rem;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin: 0 0 0.4rem 0;
+}
+
+.guideCardHighlight {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ── Spinner ── */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .stopInputGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .daysGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .bottomGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .budgetRow {
+        grid-template-columns: 1fr;
+    }
+
+    .generateBar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .generateBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}

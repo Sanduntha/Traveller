@@ -102,3 +102,46 @@ h6 {
 .dark-green-map .leaflet-control-attribution {
   filter: invert(100%) hue-rotate(180deg) brightness(80%) sepia(40%) hue-rotate(80deg) saturate(300%) contrast(1.2);
 }
+
+/* ── Dark glassmorphic Leaflet popups ── */
+.leaflet-popup-content-wrapper {
+  background: rgba(4, 14, 9, 0.93);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  font-size: 0.78rem;
+}
+
+.leaflet-popup-tip-container .leaflet-popup-tip {
+  background: rgba(4, 14, 9, 0.93);
+}
+
+.leaflet-popup-content {
+  margin: 0.5rem 0.75rem;
+  font-family: inherit;
+}
+
+.leaflet-popup-content strong {
+  color: #D4AF37;
+  font-size: 0.8rem;
+}
+
+/* Invert the dark-map filter for DivIcon markers & popups
+   so custom markers/popups aren't colour-inverted */
+.dark-green-map .leaflet-marker-pane,
+.dark-green-map .leaflet-popup-pane {
+  filter: none;
+}
+
+/* ── Pulsing animation for active route marker ── */
+@keyframes markerPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.45), 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(212, 175, 55, 0), 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+}
